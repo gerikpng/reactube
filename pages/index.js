@@ -1,6 +1,8 @@
 import config from "../config.json";
 import styled from "styled-components";
 import { CSSReset } from "../src/components/CSSReset";
+import Menu from "../src/components/Menu";
+import { StyledTimeline } from "../src/components/Timeline";
 
 
 function HomePage() {
@@ -12,7 +14,12 @@ function HomePage() {
     return (
         <>
         <CSSReset />
-        <div style={estilosHomePage}> {mensagem}
+        <div style={{
+                display: "flex",
+                flexDirection: "column",
+                flex: 1,
+                // backgroundColor: "red",
+            }}>
 
             <Menu />
             <Header />
@@ -30,11 +37,11 @@ function HomePage() {
 export default HomePage
 
 
-function Menu() {
-    return (
-        <div> MENU </div>
-    );
-}
+//function Menu() {
+//    return (
+//        <div> MENU </div>
+//    );
+//}
 
 
 const StyledHeader = styled.div`
@@ -44,6 +51,7 @@ const StyledHeader = styled.div`
         border-radius: 50%;
     }
     .user-info{
+        margin-top: 50px;
         display: flex;
         align-items: center;
         width: 100%;
@@ -71,7 +79,7 @@ function Header() {
 function Timeline(props) {
     const playlistNames = Object.keys(props.playlists);
     return (
-        <div>
+        <StyledTimeline>
             {playlistNames.map(function (playlistName) {
                 const videos = props.playlists[playlistName];
                 console.log(videos);
@@ -93,6 +101,6 @@ function Timeline(props) {
                     </section>
                 )
             })}
-        </div>
+        </StyledTimeline>
     );
 }
